@@ -20,7 +20,8 @@ Subject.prototype = {
 
   fire: function () {
     this.observer.forEach((fn) => {
-      fn.call();
+      // fn.call(); //calls or invokes the functions
+      fn();
     });
   },
 };
