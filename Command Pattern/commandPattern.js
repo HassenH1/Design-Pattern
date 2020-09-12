@@ -13,8 +13,10 @@ Calc.prototype = {
   // }, //rather then doing this you can just do
   execute: (command) => {
     this.currentValue = command.execute(this.currentValue);
+    console.log(this.currentValue, "<------this is?");
   },
   getCurrVal: () => {
+    console.log(this.currentValue);
     return this.currentValue;
   },
 };
@@ -24,10 +26,11 @@ function Command(func, value) {
   this.value = value;
 }
 
-function addCommand(value) {
+function AddCommand(value) {
   Command.call(
     this,
-    function (value) {
+    (value) => {
+      console.log(value, "<-----val in addCommand");
       return value + this.value;
     },
     value
@@ -35,3 +38,5 @@ function addCommand(value) {
 }
 
 let cal = new Calc();
+cal.execute(new AddCommand(19));
+cal.getCurrVal();
